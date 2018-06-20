@@ -2,6 +2,7 @@
 
 Jogo::Jogo()
 {
+	
 }
 
 Jogo::~Jogo()
@@ -14,7 +15,10 @@ void Jogo::inicializar()
 
 	//	O resto da inicialização vem aqui!
 	//	...
+	
 	gRecursos.carregarSpriteSheet("baby", "../../_assets/Graphics/Baby/baby0004.png", 1, 1, QUALIDADE_ESCALA_BAIXA);
+	sp.setSpriteSheet("baby");
+	
 }
 
 void Jogo::finalizar()
@@ -33,7 +37,7 @@ void Jogo::executar()
 
 		//	Seu código vem aqui!
 		//	...
-
+		sp.desenhar(100, 100, 0);
 		uniTerminarFrame();
 	}
 }
