@@ -10,9 +10,10 @@ public:
 	void animarBebe();
 	void desenharBebe();
 	void mover(int direcao);
-	void setVelociadade();
+	void setVelociadade(float vel);
 protected:
 	Sprite sprite_bebe;
 	float x, y, vel;
+	bool salvo = true;
 };
 

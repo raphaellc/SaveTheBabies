@@ -31,3 +31,15 @@ void Bebe::desenharBebe()
 {
 	sprite_bebe.desenhar(x, y);
 }
+
+void Bebe::mover(int direcao)
+{
+	x += vel;
+	y += vel;
+	sprite_bebe.setAnimacao(0);
+}
+
+void Bebe::setVelociadade(float vel)
+{
+	this->vel = vel;
+}
