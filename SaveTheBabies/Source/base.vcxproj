@@ -100,11 +100,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bebe.cpp" />
+    <ClCompile Include="CamaElastica.cpp" />
     <ClCompile Include="Jogo.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bebe.h" />
+    <ClInclude Include="CamaElastica.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="Jogo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

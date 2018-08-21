@@ -1,6 +1,7 @@
 #pragma once
 #include "libUnicornio.h"
 #include "Bebe.h"
+#include "CamaElastica.h"
 class Jogo
 {
 public:
@@ -10,6 +11,7 @@ public:
 	Sprite building_floor;
 	Sprite fire_back;
 	Bebe bb;
+	CamaElastica cama_elastica;
 	void inicializar();
 	void finalizar();
 	void executar();

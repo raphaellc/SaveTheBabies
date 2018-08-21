@@ -31,6 +31,11 @@ void Jogo::inicializar()
 	building.setSpriteSheet("building");
 	fire_back.setSpriteSheet("fire_background");
 	building_floor.setSpriteSheet("building_floor1");
+
+	//Carregar Bombeiros
+	gRecursos.carregarSpriteSheet("cama_elastica", "../../_assets/Graphics/Firefighters/batut.png", 1, 1, QUALIDADE_ESCALA_BAIXA);
+	cama_elastica.setSpriteSheet("cama_elastica");
+	cama_elastica.setPosicaoGameObject(300,500);
 }
 
 void Jogo::finalizar()
@@ -58,6 +63,12 @@ void Jogo::executar()
 		bb.mover(1);
 		bb.desenharBebe();
 		//sp.desenhar(100, 100, 0);
+		if (gTeclado.pressionou[TECLA_DIR])
+			cama_elastica.mover(1);
+		if (gTeclado.pressionou[TECLA_ESQ])
+			cama_elastica.mover(-1);
+		cama_elastica.desenhaGameObject();
+
 		uniTerminarFrame();
 	}
 }
