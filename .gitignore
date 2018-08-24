@@ -301,6 +301,6 @@ __pycache__/
 # Minha modificacoes
 !libUnicornio/**
 !Debug
-SaveTheBabies/SaveTheBabies/Source/Debug
+/SaveTheBabies/Source/Debug
 !*.dll
 !Debug/VC_redist.x86.exe
