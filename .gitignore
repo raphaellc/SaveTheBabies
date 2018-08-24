@@ -304,3 +304,4 @@ __pycache__/
 /SaveTheBabies/Source/Debug
 !*.dll
 !Debug/VC_redist.x86.exe
+*.idb
