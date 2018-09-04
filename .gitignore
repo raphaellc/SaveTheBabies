@@ -14,7 +14,7 @@
 
 # Build results
 [Dd]ebug/
-**\[Dd]ebug
+**\[Dd]ebug\
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
@@ -70,6 +70,8 @@ artifacts/
 *.tmp
 *.tmp_proj
 *.log
+*.tlog
+*.idb
 *.vspscc
 *.vssscc
 .builds
@@ -302,4 +304,3 @@ __pycache__/
 # Minha modificacoes
 !libUnicornio/**
 !*.dll
-*.idb
