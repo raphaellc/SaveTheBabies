@@ -15,15 +15,16 @@ void Jogo::inicializar()
 
 	//	O resto da inicialização vem aqui!
 	//	...
-	//Carregar Recursos do Bebê
+	
 	this->f_mapa_assets.open("..\\mapa_assets.txt", ios::in);
 	if (!f_mapa_assets) {
 		gDebug.erro("não abriu arquivo", this);
 	}
+	//Carregar Recursos
 	CarregadorDeAssets * cda_carregador_assets = new CarregadorDeAssets;
-	cda_carregador_assets->defineStream(f_mapa_assets);
-	cda_carregador_assets->carregarRecursos(f_mapa_assets);
-	gRecursos.carregarSpriteSheet("baby", "../../_assets/Graphics/Baby/baby0004_anim.png", 1, 4, QUALIDADE_ESCALA_BAIXA);
+	if(!cda_carregador_assets->carregarRecursos(f_mapa_assets)){
+		gDebug.erro("Falha no carregamento de recursos");
+	}
 	
 	gRecursos.getSpriteSheet("baby")->setNumFramesDaAnimacao(0, 4);
 	int anim = gRecursos.getSpriteSheet("baby")->adicionarAnimacao(0, 12, 10, 50);
@@ -32,15 +33,11 @@ void Jogo::inicializar()
 	bb.setVelociadade(0.1);
 
 	//Carregar Recursos do Prédio
-	gRecursos.carregarSpriteSheet("building", "../../_assets/Graphics/Building/Building_base_800_600.png", 1, 1, QUALIDADE_ESCALA_BAIXA);
-	gRecursos.carregarSpriteSheet("fire_background", "../../_assets/Graphics/Building/fire_background.png", 1, 1, QUALIDADE_ESCALA_BAIXA);
-	gRecursos.carregarSpriteSheet("building_floor1", "../../_assets/Graphics/Building/Building_floor_1.png", 1, 1, QUALIDADE_ESCALA_BAIXA);
 	building.setSpriteSheet("building");
 	fire_back.setSpriteSheet("fire_background");
 	building_floor.setSpriteSheet("building_floor1");
 
 	//Carregar Bombeiros
-	gRecursos.carregarSpriteSheet("cama_elastica", "../../_assets/Graphics/Firefighters/batut.png", 1, 1, QUALIDADE_ESCALA_BAIXA);
 	cama_elastica.setSpriteSheet("cama_elastica");
 	cama_elastica.setPosicaoGameObject(300,500);
 	
