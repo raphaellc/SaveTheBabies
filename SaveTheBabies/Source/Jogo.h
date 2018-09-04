@@ -1,7 +1,9 @@
 #pragma once
-#include "libUnicornio.h"
-#include "Bebe.h"
-#include "CamaElastica.h"
+#include "libUnicornio.h";
+#include "Bebe.h";
+#include "CamaElastica.h";
+#include "CarregadorDeAssets.h"
+#include <fstream>
 class Jogo
 {
 public:
@@ -20,5 +22,7 @@ private:
 	void gerenciarWave(int wave);
 	void gerenciarScore();
 	int score, wave;
+	fstream f_mapa_assets;
+
 };
 

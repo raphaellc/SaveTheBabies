@@ -16,6 +16,13 @@ void Jogo::inicializar()
 	//	O resto da inicialização vem aqui!
 	//	...
 	//Carregar Recursos do Bebê
+	this->f_mapa_assets.open("..\\mapa_assets.txt", ios::in);
+	if (!f_mapa_assets) {
+		gDebug.erro("não abriu arquivo", this);
+	}
+	CarregadorDeAssets * cda_carregador_assets = new CarregadorDeAssets;
+	cda_carregador_assets->defineStream(f_mapa_assets);
+	cda_carregador_assets->carregarRecursos(f_mapa_assets);
 	gRecursos.carregarSpriteSheet("baby", "../../_assets/Graphics/Baby/baby0004_anim.png", 1, 4, QUALIDADE_ESCALA_BAIXA);
 	
 	gRecursos.getSpriteSheet("baby")->setNumFramesDaAnimacao(0, 4);
@@ -36,6 +43,7 @@ void Jogo::inicializar()
 	gRecursos.carregarSpriteSheet("cama_elastica", "../../_assets/Graphics/Firefighters/batut.png", 1, 1, QUALIDADE_ESCALA_BAIXA);
 	cama_elastica.setSpriteSheet("cama_elastica");
 	cama_elastica.setPosicaoGameObject(300,500);
+	
 }
 
 void Jogo::finalizar()
@@ -43,6 +51,7 @@ void Jogo::finalizar()
 	//	O resto da finalização vem aqui (provavelmente, em ordem inversa a inicialização)!
 	//	...
 	gRecursos.descarregarSpriteSheet("baby");
+	
 	uniFinalizar();
 }
 

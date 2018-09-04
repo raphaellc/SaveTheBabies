@@ -101,12 +101,14 @@
   <ItemGroup>
     <ClCompile Include="Bebe.cpp" />
     <ClCompile Include="CamaElastica.cpp" />
+    <ClCompile Include="CarregadorDeAssets.cpp" />
     <ClCompile Include="Jogo.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bebe.h" />
     <ClInclude Include="CamaElastica.h" />
+    <ClInclude Include="CarregadorDeAssets.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Jogo.h" />
   </ItemGroup>
