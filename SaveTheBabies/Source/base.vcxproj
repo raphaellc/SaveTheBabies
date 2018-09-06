@@ -102,6 +102,7 @@
     <ClCompile Include="Bebe.cpp" />
     <ClCompile Include="CamaElastica.cpp" />
     <ClCompile Include="CarregadorDeAssets.cpp" />
+    <ClCompile Include="EstadoJogo.cpp" />
     <ClCompile Include="Jogo.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -109,7 +110,9 @@
     <ClInclude Include="Bebe.h" />
     <ClInclude Include="CamaElastica.h" />
     <ClInclude Include="CarregadorDeAssets.h" />
+    <ClInclude Include="EstadoJogo.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="ISerializavel.h" />
     <ClInclude Include="Jogo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

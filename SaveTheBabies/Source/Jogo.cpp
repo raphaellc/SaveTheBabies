@@ -11,21 +11,48 @@ Jogo::~Jogo()
 
 void Jogo::inicializar()
 {
+	this->vida = 10;
+	this->score = 2;
+	this->wave = 1;
 	uniInicializar(800, 600, false);
 
 	//	O resto da inicialização vem aqui!
 	//	...
+	//Carregar Estado do Jogo
 	
-	this->f_mapa_assets.open("..\\mapa_assets.txt", ios::in);
-	if (!f_mapa_assets) {
+	this->of_stream.open("..\\save.dat", ios::binary |ios::trunc);
+	if (!this->of_stream) {
+		gDebug.erro("não abriu arquivo save");
+	}
+	else {
+		this->gravar(this->of_stream);
+		//this->carregar(f_teste_stream);
+		this->of_stream.close();
+	}
+	this->if_stream.open("..\\save.dat", ios::binary);
+	if (!this->if_stream) {
+		gDebug.erro("não abriu arquivo if_stream", this);
+	}
+	else {
+		
+		this->carregar(this->if_stream);
+		this->if_stream.close();
+	}
+	
+	//------Fim Carregamento do estado do Jogo -------//
+
+	this->f_stream.open("..\\mapa_assets.txt", ios::in);
+	if (!f_stream) {
 		gDebug.erro("não abriu arquivo", this);
 	}
-	//Carregar Recursos
-	CarregadorDeAssets * cda_carregador_assets = new CarregadorDeAssets;
-	if(!cda_carregador_assets->carregarRecursos(f_mapa_assets)){
-		gDebug.erro("Falha no carregamento de recursos");
+	else {
+		//Carregar Recursos
+		CarregadorDeAssets * cda_carregador_assets = new CarregadorDeAssets;
+		if (!cda_carregador_assets->carregarRecursos(f_stream)) {
+			gDebug.erro("Falha no carregamento de recursos");
+		}
+		f_stream.close();
 	}
-	
 	gRecursos.getSpriteSheet("baby")->setNumFramesDaAnimacao(0, 4);
 	int anim = gRecursos.getSpriteSheet("baby")->adicionarAnimacao(0, 12, 10, 50);
 	bb.setSpriteSheet("baby");
@@ -97,4 +124,35 @@ void Jogo::gerenciarWave(int wave)
 			//lança 2 com intervalo de tempo entre os 2 em determinado intervalo de tempo.
 		}
 	}
+}
+bool Jogo::gravar(std::ostream& os) const {
+	EstadoJogo ej_estado_jogo;
+	if (os) {
+		ej_estado_jogo.defineScore(this->score);
+		ej_estado_jogo.defineWave(this->wave);
+		ej_estado_jogo.defineVida(this->vida);
+		os.write(reinterpret_cast<char *>(&ej_estado_jogo), sizeof(EstadoJogo));
+		
+	}else{
+		return false;
+		gDebug.erro("falha na stream");
+	}
+	return true;
+}
+
+bool Jogo::carregar(std::istream & is) {
+	EstadoJogo ej_estado_jogo;
+	if(is){
+		is.read(reinterpret_cast<char *>(&ej_estado_jogo), sizeof(EstadoJogo));
+		this->vida = ej_estado_jogo.obtemVida();
+		this->score = ej_estado_jogo.obtemScore();
+		this->wave = ej_estado_jogo.obtemWave();
+		gDebug.depurar("vida", ej_estado_jogo.obtemVida());
+		gDebug.depurar("score", ej_estado_jogo.obtemScore());
+		gDebug.depurar("wave", ej_estado_jogo.obtemWave());
+	}
+	else{
+		return false;
+	}
+	return true;
 }
