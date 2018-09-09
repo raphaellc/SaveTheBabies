@@ -11,7 +11,7 @@ Bebe::~Bebe()
 {
 }
 
-void Bebe::setPos(float x, float y)
+void Bebe::setPosicaoGameObject(float x, float y)
 {
 	this->x = x;
 	this->y = y;
@@ -19,27 +19,27 @@ void Bebe::setPos(float x, float y)
 
 void Bebe::setSpriteSheet(string sprite_sheet)
 {
-	sprite_bebe.setSpriteSheet(sprite_sheet);
+	sprite_game_object.setSpriteSheet(sprite_sheet);
 }
 
-void Bebe::animarBebe()
+void Bebe::animaGameObject()
 {
-	sprite_bebe.avancarAnimacao();
+	sprite_game_object.avancarAnimacao();
 }
 
-void Bebe::desenharBebe()
+void Bebe::desenhaGameObject()
 {
-	sprite_bebe.desenhar(x, y);
+	sprite_game_object.desenhar(x, y);
 }
 
 void Bebe::mover(int direcao)
 {
-	x += vel;
-	y += vel;
-	sprite_bebe.setAnimacao(0);
+	x += velocidade;
+	y += velocidade;
+	sprite_game_object.setAnimacao(0);
 }
 
 void Bebe::setVelociadade(float vel)
 {
-	this->vel = vel;
+	this->velocidade = vel;
 }

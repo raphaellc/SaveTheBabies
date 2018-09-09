@@ -1,19 +1,19 @@
 #pragma once
 #include "libUnicornio.h"
-class Bebe
+#include "GameObject.h"
+
+class Bebe : public GameObject
 {
 public:
 	Bebe();
 	~Bebe();
-	void setPos(float x, float y);
-	void setSpriteSheet(string sprite_sheet);
-	void animarBebe();
-	void desenharBebe();
-	void mover(int direcao);
+	void setPosicaoGameObject(float x, float y) override;
+	void setSpriteSheet(string sprite_sheet) override;
+	void animaGameObject() override;
+	void desenhaGameObject() override;
+	void mover(int direcao) override;
 	void setVelociadade(float vel);
 protected:
-	Sprite sprite_bebe;
-	float x, y, vel;
 	bool salvo = true;
 };
 

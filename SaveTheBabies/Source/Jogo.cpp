@@ -56,7 +56,7 @@ void Jogo::inicializar()
 	gRecursos.getSpriteSheet("baby")->setNumFramesDaAnimacao(0, 4);
 	int anim = gRecursos.getSpriteSheet("baby")->adicionarAnimacao(0, 12, 10, 50);
 	bb.setSpriteSheet("baby");
-	bb.setPos(gJanela.getLargura() / 2, gJanela.getAltura() / 2);
+	bb.setPosicaoGameObject(gJanela.getLargura() / 2, gJanela.getAltura() / 2);
 	bb.setVelociadade(0.1);
 
 	//Carregar Recursos do Prédio
@@ -92,9 +92,9 @@ void Jogo::executar()
 		
 		//	Seu código vem aqui!
 		//	...
-		bb.animarBebe();
+		bb.animaGameObject();
 		bb.mover(1);
-		bb.desenharBebe();
+		bb.desenhaGameObject();
 		//sp.desenhar(100, 100, 0);
 		if (gTeclado.pressionou[TECLA_DIR])
 			cama_elastica.mover(1);
