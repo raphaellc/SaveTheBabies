@@ -14,6 +14,8 @@ void Jogo::inicializar()
 	this->vida = 10;
 	this->score = 2;
 	this->wave = 1;
+	bb = new Bebe();
+	cama_elastica = new CamaElastica();
 	uniInicializar(800, 600, false);
 
 	//	O resto da inicialização vem aqui!
@@ -54,10 +56,10 @@ void Jogo::inicializar()
 		f_stream.close();
 	}
 	gRecursos.getSpriteSheet("baby")->setNumFramesDaAnimacao(0, 4);
-	int anim = gRecursos.getSpriteSheet("baby")->adicionarAnimacao(0, 12, 10, 50);
-	bb.setSpriteSheet("baby");
-	bb.setPosicaoGameObject(gJanela.getLargura() / 2, gJanela.getAltura() / 2);
-	bb.setVelociadade(0.1);
+	int i_anim = gRecursos.getSpriteSheet("baby")->adicionarAnimacao(0, 12, 10, 50);
+	bb->setSpriteSheet("baby");
+	bb->setPosicaoGameObject(gJanela.getLargura() / 2, gJanela.getAltura() / 2);
+	bb->setVelociadade(0.1);
 
 	//Carregar Recursos do Prédio
 	building.setSpriteSheet("building");
@@ -65,8 +67,8 @@ void Jogo::inicializar()
 	building_floor.setSpriteSheet("building_floor1");
 
 	//Carregar Bombeiros
-	cama_elastica.setSpriteSheet("cama_elastica");
-	cama_elastica.setPosicaoGameObject(300,500);
+	cama_elastica->setSpriteSheet("cama_elastica");
+	cama_elastica->setPosicaoGameObject(300,500);
 	
 }
 
@@ -81,8 +83,10 @@ void Jogo::finalizar()
 
 void Jogo::executar()
 {
+	int i_direcao_bb = 1;
 	while(!gTeclado.soltou[TECLA_ESC] && !gEventos.sair)
 	{
+		
 		uniIniciarFrame();
 		fire_back.desenhar(0, 450);
 		building.desenhar(140, 450);
@@ -92,16 +96,24 @@ void Jogo::executar()
 		
 		//	Seu código vem aqui!
 		//	...
-		bb.animaGameObject();
-		bb.mover(1);
-		bb.desenhaGameObject();
+		
+		bb->animaGameObject();
+		bb->mover(i_direcao_bb);
+		bb->desenhaGameObject();
 		//sp.desenhar(100, 100, 0);
 		if (gTeclado.pressionou[TECLA_DIR])
-			cama_elastica.mover(1);
+			cama_elastica->mover(1);
 		if (gTeclado.pressionou[TECLA_ESQ])
-			cama_elastica.mover(-1);
-		cama_elastica.desenhaGameObject();
-
+			cama_elastica->mover(-1);
+		cama_elastica->desenhaGameObject();
+		if(uniTestarColisao(bb->getSprite(), bb->getX(), bb->getY(), 0, 
+			cama_elastica->getSprite(), cama_elastica->getX(), cama_elastica->getY(),0))
+		{
+			gDebug.depurar("Colisão", "colidiu");
+			i_direcao_bb = -1;
+		}
+		if (bb->getY() < 300 && i_direcao_bb < 0)
+			i_direcao_bb = 1;
 		uniTerminarFrame();
 	}
 }

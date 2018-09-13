@@ -16,8 +16,8 @@ public:
 	Sprite building;
 	Sprite building_floor;
 	Sprite fire_back;
-	Bebe bb;
-	CamaElastica cama_elastica;
+	Bebe * bb;
+	CamaElastica * cama_elastica;
 	void inicializar();
 	void finalizar();
 	void executar();

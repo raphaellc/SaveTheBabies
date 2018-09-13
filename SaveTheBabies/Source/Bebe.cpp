@@ -35,7 +35,7 @@ void Bebe::desenhaGameObject()
 void Bebe::mover(int direcao)
 {
 	x += velocidade;
-	y += velocidade;
+	y += (velocidade * direcao);
 	sprite_game_object.setAnimacao(0);
 }
 
@@ -43,3 +43,11 @@ void Bebe::setVelociadade(float vel)
 {
 	this->velocidade = vel;
 }
+
+Sprite Bebe::getSprite() {
+	return this->sprite_game_object;
+}
+
+float Bebe::getX() { return this->x; }
+float Bebe::getY() { return this->y; }
+

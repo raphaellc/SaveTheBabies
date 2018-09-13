@@ -105,6 +105,7 @@
     <ClCompile Include="EstadoJogo.cpp" />
     <ClCompile Include="Jogo.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Stream.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bebe.h" />
@@ -114,6 +115,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="ISerializavel.h" />
     <ClInclude Include="Jogo.h" />
+    <ClInclude Include="Stream.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
