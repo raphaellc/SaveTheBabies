@@ -3,6 +3,7 @@
 #include "Bebe.h"
 #include "CamaElastica.h"
 #include "CarregadorDeAssets.h"
+#include "Bombeiro.h"
 //#include <fstream>
 #include <iostream>
 #include "ISerializavel.h"
@@ -18,6 +19,8 @@ public:
 	Sprite fire_back;
 	Bebe * bb;
 	CamaElastica * cama_elastica;
+	Bombeiro * bombeiro_esq, * bombeiro_dir;
+	
 	void inicializar();
 	void finalizar();
 	void executar();

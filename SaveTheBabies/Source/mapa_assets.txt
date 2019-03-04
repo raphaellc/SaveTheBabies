@@ -4,3 +4,5 @@ sprite_sheet building ../../_assets/Graphics/Building/Building_base_800_600.png 
 sprite_sheet fire_background ../../_assets/Graphics/Building/fire_background.png 1 1
 sprite_sheet building_floor1 ../../_assets/Graphics/Building/Building_floor_1.png 1 1
 sprite_sheet cama_elastica ../../_assets/Graphics/Firefighters/batut.png 1 1
+sprite_sheet firefighters_idle ../../_assets/Graphics/Firefighters/firefighter_idle_sprite.png 1 14
+sprite_sheet firefighters_walk ../../_assets/Graphics/Firefighters/firefighter_walk_sprite.png 1 14

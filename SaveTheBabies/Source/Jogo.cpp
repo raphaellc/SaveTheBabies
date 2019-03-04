@@ -16,12 +16,14 @@ void Jogo::inicializar()
 	this->wave = 1;
 	bb = new Bebe();
 	cama_elastica = new CamaElastica();
+	bombeiro_esq = new Bombeiro();
+	bombeiro_dir = new Bombeiro();
 	uniInicializar(800, 600, false);
 
 	//	O resto da inicialização vem aqui!
 	//	...
 	//Carregar Estado do Jogo
-	
+	//Todo: Singleton de stream? 
 	this->of_stream.open("..\\save.dat", ios::binary |ios::trunc);
 	if (!this->of_stream) {
 		gDebug.erro("não abriu arquivo save");
@@ -69,7 +71,11 @@ void Jogo::inicializar()
 	//Carregar Bombeiros
 	cama_elastica->setSpriteSheet("cama_elastica");
 	cama_elastica->setPosicaoGameObject(300,500);
-	
+	gRecursos.getSpriteSheet("firefighters_idle")->setNumFramesDaAnimacao(0, 14);
+	bombeiro_esq->setSpriteSheet("firefighters_idle");
+	bombeiro_esq->setPosicaoGameObject(290, 500);
+	bombeiro_dir->setSpriteSheet("firefighters_idle");
+	bombeiro_dir->setPosicaoGameObject(390, 500);
 }
 
 void Jogo::finalizar()
@@ -101,11 +107,19 @@ void Jogo::executar()
 		bb->mover(i_direcao_bb);
 		bb->desenhaGameObject();
 		//sp.desenhar(100, 100, 0);
-		if (gTeclado.pressionou[TECLA_DIR])
+		if (gTeclado.pressionou[TECLA_DIR]) {
 			cama_elastica->mover(1);
-		if (gTeclado.pressionou[TECLA_ESQ])
+			bombeiro_esq->mover(1);
+			bombeiro_esq->animaGameObject();
+		}
+		if (gTeclado.pressionou[TECLA_ESQ]) {
 			cama_elastica->mover(-1);
+			bombeiro_esq->mover(-1);
+			bombeiro_esq->animaGameObject();
+		}
 		cama_elastica->desenhaGameObject();
+		bombeiro_esq->desenhaGameObject();
+
 		if(uniTestarColisao(bb->getSprite(), bb->getX(), bb->getY(), 0, 
 			cama_elastica->getSprite(), cama_elastica->getX(), cama_elastica->getY(),0))
 		{
