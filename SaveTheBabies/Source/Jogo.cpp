@@ -109,16 +109,16 @@ void Jogo::executar()
 		//sp.desenhar(100, 100, 0);
 		if (gTeclado.pressionou[TECLA_DIR]) {
 			cama_elastica->mover(1);
-			bombeiro_esq->mover(1);
-			bombeiro_esq->animaGameObject();
+			//bombeiro_esq->mover(1);
+			//bombeiro_esq->animaGameObject();
 		}
 		if (gTeclado.pressionou[TECLA_ESQ]) {
 			cama_elastica->mover(-1);
-			bombeiro_esq->mover(-1);
-			bombeiro_esq->animaGameObject();
+			//bombeiro_esq->mover(-1);
+			//bombeiro_esq->animaGameObject();
 		}
 		cama_elastica->desenhaGameObject();
-		bombeiro_esq->desenhaGameObject();
+		//bombeiro_esq->desenhaGameObject();
 
 		if(uniTestarColisao(bb->getSprite(), bb->getX(), bb->getY(), 0, 
 			cama_elastica->getSprite(), cama_elastica->getX(), cama_elastica->getY(),0))
