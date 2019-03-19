@@ -8,6 +8,8 @@
 #include <iostream>
 #include "ISerializavel.h"
 #include "EstadoJogo.h"
+#include "SpawnerFor.cpp"
+#include <queue>
 
 class Jogo : public ISerializavel
 {
@@ -20,7 +22,8 @@ public:
 	Bebe * bb;
 	CamaElastica * cama_elastica;
 	Bombeiro * bombeiro_esq, * bombeiro_dir;
-	
+	Spawner * bebeSpawner = new SpawnerFor<Bebe>();
+	queue<Bebe*> * filaBebes = new queue<Bebe*>();
 	void inicializar();
 	void finalizar();
 	void executar();

@@ -102,7 +102,7 @@ void Jogo::executar()
 		
 		//	Seu código vem aqui!
 		//	...
-		
+		filaBebes->push(dynamic_cast<Bebe*> bebeSpawner->spawnGameObject())
 		bb->animaGameObject();
 		bb->mover(i_direcao_bb);
 		bb->desenhaGameObject();
@@ -134,6 +134,7 @@ void Jogo::executar()
 
 void Jogo::gerenciarWave(int wave)
 {
+	//@todo criar fila de bebe para enfileirar e desenfileirar e reinfileirar para verificar status
 	switch (wave)
 	{
 	case 1: {
