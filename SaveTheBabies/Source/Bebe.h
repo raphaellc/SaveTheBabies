@@ -13,7 +13,7 @@ public:
 	void desenhaGameObject() override;
 	void mover(int direcao) override;
 	void setVelociadade(float vel);
-	Sprite getSprite() override;
+	Sprite * getSprite() override;
 	float getX() override;
 	float getY() override;
 protected:

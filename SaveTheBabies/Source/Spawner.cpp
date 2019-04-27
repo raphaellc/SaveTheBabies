@@ -1,14 +1,12 @@
 #include "Spawner.h"
 
-
-
-Spawner::Spawner()
+Spawner::~Spawner()
 {
 }
 
-
-Spawner::~Spawner()
+GameObject* Spawner::spawnGameObject()
 {
+	return nullptr;
 }
 
 

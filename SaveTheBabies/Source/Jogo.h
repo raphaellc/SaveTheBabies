@@ -11,6 +11,7 @@
 #include "SpawnerFor.cpp"
 #include <queue>
 
+
 class Jogo : public ISerializavel
 {
 public:
@@ -22,8 +23,8 @@ public:
 	Bebe * bb;
 	CamaElastica * cama_elastica;
 	Bombeiro * bombeiro_esq, * bombeiro_dir;
-	Spawner * bebeSpawner = new SpawnerFor<Bebe>();
-	queue<Bebe*> * filaBebes = new queue<Bebe*>();
+	SpawnerFor<Bebe> * bbSpawner = new SpawnerFor<Bebe>;
+	queue<Bebe*> * filaBebes = new queue<Bebe*>;
 	void inicializar();
 	void finalizar();
 	void executar();

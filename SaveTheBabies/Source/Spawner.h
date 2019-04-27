@@ -3,6 +3,7 @@
 class Spawner
 {
 public:
+	
 	virtual ~Spawner();
 	virtual GameObject* spawnGameObject();
 };

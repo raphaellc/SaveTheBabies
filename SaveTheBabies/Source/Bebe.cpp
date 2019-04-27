@@ -44,8 +44,8 @@ void Bebe::setVelociadade(float vel)
 	this->velocidade = vel;
 }
 
-Sprite Bebe::getSprite() {
-	return this->sprite_game_object;
+Sprite * Bebe::getSprite() {
+	return &this->sprite_game_object;
 }
 
 float Bebe::getX() { return this->x; }

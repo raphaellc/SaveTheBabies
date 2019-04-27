@@ -3,7 +3,7 @@ template <class T>
 class SpawnerFor : public Spawner
 {
 public:
-	virtual GameObject* spawnGameObject() override;
+	GameObject* spawnGameObject() override;
 };
 template <class T>
 GameObject* SpawnerFor<T>::spawnGameObject()

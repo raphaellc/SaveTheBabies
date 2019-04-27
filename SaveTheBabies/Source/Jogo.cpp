@@ -60,8 +60,8 @@ void Jogo::inicializar()
 	gRecursos.getSpriteSheet("baby")->setNumFramesDaAnimacao(0, 4);
 	int i_anim = gRecursos.getSpriteSheet("baby")->adicionarAnimacao(0, 12, 10, 50);
 	bb->setSpriteSheet("baby");
-	bb->setPosicaoGameObject(gJanela.getLargura() / 2, gJanela.getAltura() / 2);
-	bb->setVelociadade(0.1);
+	bb->setPosicaoGameObject((gJanela.getLargura() / 2), (gJanela.getAltura() / 2));
+	bb->setVelociadade(0.1f);
 
 	//Carregar Recursos do Prédio
 	building.setSpriteSheet("building");
@@ -73,9 +73,10 @@ void Jogo::inicializar()
 	cama_elastica->setPosicaoGameObject(300,500);
 	gRecursos.getSpriteSheet("firefighters_idle")->setNumFramesDaAnimacao(0, 14);
 	bombeiro_esq->setSpriteSheet("firefighters_idle");
-	bombeiro_esq->setPosicaoGameObject(290, 500);
+	bombeiro_esq->setPosicaoGameObject(200, 500);
 	bombeiro_dir->setSpriteSheet("firefighters_idle");
-	bombeiro_dir->setPosicaoGameObject(390, 500);
+	bombeiro_dir->setPosicaoGameObject(400, 500);
+	bombeiro_dir->getSprite()->setInverterX(true);
 }
 
 void Jogo::finalizar()
@@ -102,26 +103,33 @@ void Jogo::executar()
 		
 		//	Seu código vem aqui!
 		//	...
-		filaBebes->push(dynamic_cast<Bebe*> bebeSpawner->spawnGameObject())
+		filaBebes->push(dynamic_cast<Bebe*> (bbSpawner->spawnGameObject()));
 		bb->animaGameObject();
 		bb->mover(i_direcao_bb);
 		bb->desenhaGameObject();
 		//sp.desenhar(100, 100, 0);
 		if (gTeclado.pressionou[TECLA_DIR]) {
 			cama_elastica->mover(1);
-			//bombeiro_esq->mover(1);
-			//bombeiro_esq->animaGameObject();
+			bombeiro_esq->mover(1);
+			bombeiro_esq->animaGameObject();
+			bombeiro_dir->mover(1);
+			bombeiro_dir->animaGameObject();
+
+
 		}
 		if (gTeclado.pressionou[TECLA_ESQ]) {
 			cama_elastica->mover(-1);
-			//bombeiro_esq->mover(-1);
-			//bombeiro_esq->animaGameObject();
+			bombeiro_esq->mover(-1);
+			bombeiro_esq->animaGameObject();
+			bombeiro_dir->mover(-1);
+			bombeiro_dir->animaGameObject();
 		}
+		bombeiro_esq->desenhaGameObject();
+		bombeiro_dir->desenhaGameObject();
 		cama_elastica->desenhaGameObject();
-		//bombeiro_esq->desenhaGameObject();
 
-		if(uniTestarColisao(bb->getSprite(), bb->getX(), bb->getY(), 0, 
-			cama_elastica->getSprite(), cama_elastica->getX(), cama_elastica->getY(),0))
+		if(uniTestarColisao(*bb->getSprite(), bb->getX(), bb->getY(), 0, 
+			*cama_elastica->getSprite(), cama_elastica->getX(), cama_elastica->getY(),0))
 		{
 			gDebug.depurar("Colisão", "colidiu");
 			i_direcao_bb = -1;

@@ -44,8 +44,8 @@ void CamaElastica::mover(int direcao)
 		setPosicaoGameObject((this->x - 50), 500);
 }
 
-Sprite CamaElastica::getSprite() {
-	return this->sprite_game_object;
+Sprite * CamaElastica::getSprite() {
+	return &this->sprite_game_object;
 }
 
 float CamaElastica::getX() { return this->x; }

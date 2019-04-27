@@ -12,7 +12,7 @@ public:
 	void setPosicaoGameObject(float pos_x, float pos_y) override;
 	void setSpriteSheet(string nome_sprite) override;
 	void mover(int direcao) override;
-	Sprite getSprite() override;
+	Sprite * getSprite() override;
 	float getX() override;
 	float getY() override;
 };

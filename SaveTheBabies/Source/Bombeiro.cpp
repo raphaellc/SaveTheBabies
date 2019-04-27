@@ -30,6 +30,8 @@ void Bombeiro::setPosicaoGameObject(float pos_x, float pos_y)
 void Bombeiro::setSpriteSheet(string nome_sprite)
 {
 	this->sprite_game_object.setSpriteSheet(nome_sprite);
+	this->sprite_game_object.setEscala(0.15, 0.15);
+	
 }
 
 void Bombeiro::mover(int direcao)
@@ -40,9 +42,9 @@ void Bombeiro::mover(int direcao)
 		setPosicaoGameObject((this->x - 50), 500);
 }
 
-Sprite Bombeiro::getSprite()
+Sprite * Bombeiro::getSprite()
 {
-	return this->sprite_game_object;
+	return &this->sprite_game_object;
 }
 
 float Bombeiro::getX()
