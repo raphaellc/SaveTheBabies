@@ -16,6 +16,7 @@ public:
 	Sprite * getSprite() override;
 	float getX() override;
 	float getY() override;
+	void update() override;
 protected:
 	bool salvo = true;
 };

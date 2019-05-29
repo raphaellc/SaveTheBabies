@@ -51,3 +51,9 @@ Sprite * Bebe::getSprite() {
 float Bebe::getX() { return this->x; }
 float Bebe::getY() { return this->y; }
 
+void Bebe::update()
+{
+	mover(1);
+	desenhaGameObject();
+
+}
