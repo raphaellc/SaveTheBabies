@@ -15,4 +15,5 @@ public:
 protected:
 	float x = 0.0f, y = 0.0f, velocidade = 0.0f;
 	Sprite sprite_game_object;
+
 };
