@@ -57,3 +57,9 @@ float Bombeiro::getY()
 	return this->y;
 }
 
+void Bombeiro::update()
+{
+	//@todo: Desenhar, mover;
+	desenhaGameObject();
+}
+

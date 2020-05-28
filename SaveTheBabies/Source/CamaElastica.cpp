@@ -53,3 +53,8 @@ float CamaElastica::getY() {
 	return this->y;
 }
 
+void CamaElastica::update()
+{
+	//@todo: Atualizar o que??
+}
+
