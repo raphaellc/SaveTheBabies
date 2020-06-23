@@ -10,7 +10,9 @@
 #include "EstadoJogo.h"
 #include "SpawnerFor.cpp"
 #include <queue>
-
+#include <stack>
+#include "ICenas.h"
+#include "CenaTelaInicial.h"
 
 
 class Jogo : public ISerializavel
@@ -26,6 +28,7 @@ public:
 	Bombeiro * bombeiro_esq, * bombeiro_dir;
 	SpawnerFor<Bebe> * bbSpawner = new SpawnerFor<Bebe>;
 	queue<Bebe*> * filaBebes = new queue<Bebe*>;
+	stack<ICenas*> cenas;
 	void inicializar();
 	void finalizar();
 	void executar();

@@ -1,4 +1,6 @@
 #include "Jogo.h"
+#include "CenaMenuPrincipal.h"
+
 
 Jogo::Jogo()
 {
@@ -18,6 +20,12 @@ void Jogo::inicializar()
 	cama_elastica = new CamaElastica();
 	bombeiro_esq = new Bombeiro();
 	bombeiro_dir = new Bombeiro();
+	ICenas * cenaTemp = new CenaMenuPrincipal();
+	cenas.push(new CenaTelaInicial("Novo Jogo"));
+	cenas.top()->defineProximaCena(cenaTemp);
+	Botao * bt = new Botao();
+	bt->
+	cenaTemp()->insereBotao(new Botao())
 	uniInicializar(800, 600, false);
 
 	//	O resto da inicialização vem aqui!
@@ -77,6 +85,9 @@ void Jogo::inicializar()
 	bombeiro_dir->setSpriteSheet("firefighters_idle");
 	bombeiro_dir->setPosicaoGameObject(400, 500);
 	bombeiro_dir->getSprite()->setInverterX(true);
+	cenas.push(new CenaTelaInicial());
+	cenas.top()->defineProximaCena(new CenaTelaInicial("SegundaTela"));
+	
 }
 
 void Jogo::finalizar()
@@ -95,7 +106,12 @@ void Jogo::executar()
 	{
 		
 		uniIniciarFrame();
-		fire_back.desenhar(0, 450);
+		cenas.top()->desenhar();
+		cenas.top()->atualizar();
+		if (cenas.top()->terminouCena())
+			cenas.push(cenas.top()->proxima());
+
+		/*fire_back.desenhar(0, 450);
 		building.desenhar(140, 450);
 		building_floor.desenhar(138, 270);
 		building_floor.desenhar(138, 150);
@@ -135,7 +151,7 @@ void Jogo::executar()
 			i_direcao_bb = -1;
 		}
 		if (bb->getY() < 300 && i_direcao_bb < 0)
-			i_direcao_bb = 1;
+			i_direcao_bb = 1;*/
 		uniTerminarFrame();
 	}
 }
